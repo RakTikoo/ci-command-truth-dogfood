@@ -1,7 +1,7 @@
 # ci-command-truth-dogfood
 
 A consumer repo that uses the **published** GitHub Action
-`RakTikoo/ci-command-truth@v0.2` exactly as a stranger would — no vendored
+`RakTikoo/ci-command-truth@v0.2.1` exactly as a stranger would — no vendored
 copy of the tool.
 
 The `dogfood` workflow runs two jobs, each invoking the published action

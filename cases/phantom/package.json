@@ -1,0 +1,1 @@
+{"name":"cct-dogfood-phantom-case","private":true,"scripts":{"test":"echo \"test ok\"","test:units":"echo \"unit tests ok\""},"version":"0.0.0"}

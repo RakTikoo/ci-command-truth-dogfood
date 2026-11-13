@@ -1,0 +1,30 @@
+name: dogfood
+on: [push, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Published action vs clean case (expect success)
+        uses: RakTikoo/ci-command-truth@v0.2
+        with:
+          path: cases/clean
+  phantom-detected:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: cct
+        continue-on-error: true
+        name: Published action vs phantom case (expect failure)
+        uses: RakTikoo/ci-command-truth@v0.2
+        with:
+          path: cases/phantom
+      - name: Assert the published action failed the phantom case
+        run: |
+          if [ "${{ steps.cct.outcome }}" != "failure" ]; then
+            echo "Expected the phantom step to fail, got: ${{ steps.cct.outcome }}"
+            exit 1
+          fi
+          echo "Published action correctly failed on the planted phantom command."

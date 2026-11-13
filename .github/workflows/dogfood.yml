@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Published action vs clean case (expect success)
-        uses: RakTikoo/ci-command-truth@v0.2
+        uses: RakTikoo/ci-command-truth@v0.2.1
         with:
           path: cases/clean
   phantom-detected:
@@ -18,7 +18,7 @@ jobs:
       - id: cct
         continue-on-error: true
         name: Published action vs phantom case (expect failure)
-        uses: RakTikoo/ci-command-truth@v0.2
+        uses: RakTikoo/ci-command-truth@v0.2.1
         with:
           path: cases/phantom
       - name: Assert the published action failed the phantom case
